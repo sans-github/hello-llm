@@ -3,16 +3,13 @@ name = "hello-llm"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "San", email = "San" }
-]
 requires-python = ">=3.14"
 dependencies = [
     "openai>=2.13.0",
 ]
 
 [project.scripts]
-hello-llm = "hello_llm:main"
+hello-llm = "hello_llm:openai_chat:main"
 
 [build-system]
 requires = ["uv_build>=0.9.18,<0.10.0"]
