@@ -1,20 +1,26 @@
 from openai import OpenAI
-
-client = OpenAI()
-
-print(f"==client type = {type(client)}==")
-
-# client = OpenAI(api_key="your-api-key-here")
-# Instead, set as env variable
-# export OPENAI_API_KEY="..."
+import os
 
 
-def chat_with_gpt(prompt):
-    gpt_response = client.responses.create(model="gpt-5-nano", input=prompt)
-    return gpt_response.output_text
+class TestChat:
+    def __init__(self):
+        """
+        # client = OpenAI(api_key="your-api-key-here") <br/>
+        # Instead, set as env variable<br/>
+        # export OPENAI_API_KEY="..."
+        """
+        self.client = OpenAI()
+        print(f"==client type = {type(self.client)}==")
+
+    def chat_with_gpt(self, prompt):
+        gpt_response = self.client.responses.create(model="gpt-5-nano", input=prompt)
+        return gpt_response.output_text
 
 
 if __name__ == "__main__":
+    os.system("clear")
+    print("===Here===")
+    test_chat = TestChat()
     while True:
         user_input = input("You: ")
         if user_input.lower() in [
@@ -47,5 +53,5 @@ if __name__ == "__main__":
             "cancel",
         ]:
             break
-        response = chat_with_gpt(user_input)
+        response = test_chat.chat_with_gpt(user_input)
         print("Response: ", response)
